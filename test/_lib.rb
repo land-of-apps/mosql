@@ -1,3 +1,5 @@
+require 'appmap/minitest'
+
 require 'minitest/autorun'
 require 'minitest/spec'
 require 'mocha'
