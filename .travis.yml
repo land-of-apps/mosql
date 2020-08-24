@@ -1,5 +1,8 @@
-# Turn on validation so we can use import:
+# Turn on validation, so we can use import:
 version: ~> 1.0
+
+import:
+- land-of-apps/land-of-apps:travis/ruby-imports.yml
 
 services:
   - mongodb
@@ -12,4 +15,7 @@ env:
   - MONGOSQL_TEST_SQL=postgres://localhost/mosql
 
 script:
-- rake test
+- APPMAP=true bundle exec rake test
+
+after_script:
+- env DEBUG=true ruby ./upload-appmaps tmp/appmap/minitest
